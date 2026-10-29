@@ -82,9 +82,10 @@ body.locked {
 }
 
 body.locked .app {
-  filter: blur(14px);
+  filter: blur(18px);
   pointer-events: none;
   user-select: none;
+  opacity: 0.15;
 }
 
 button, input, select, textarea {
@@ -109,13 +110,13 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: rgba(6, 11, 22, 0.78);
-  backdrop-filter: blur(16px);
+  background: rgba(6, 11, 22, 0.85);
+  backdrop-filter: blur(18px);
   transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
 :root[data-theme="light"] .login-overlay {
-  background: rgba(243, 246, 251, 0.82);
+  background: rgba(243, 246, 251, 0.88);
 }
 
 .login-overlay.hidden {
@@ -252,7 +253,7 @@ mark.hl {
   max-width: 1260px;
   margin: 0 auto;
   padding: 20px 22px 54px;
-  transition: filter 0.25s ease;
+  transition: filter 0.25s ease, opacity 0.25s ease;
 }
 
 /* Topbar compacta e integrada */
@@ -1504,7 +1505,7 @@ mark.hl {
 
     <div class="field">
       <label for="loginUser">Nome de login</label>
-      <input id="loginUser" type="text" placeholder="Digite seu usuário" autocomplete="username" required>
+      <input id="loginUser" type="text" placeholder="Digite seu usuário" autocomplete="off" required>
     </div>
 
     <div class="field">
@@ -1542,7 +1543,7 @@ mark.hl {
         </svg>
       </div>
       <div class="brand-text">
-        <small>Espaço de trabalho · Átila Camargo</small>
+        <small>Espaço de trabalho</small>
         <h1>Central de Aplicações</h1>
         <p>Clique em qualquer card para abrir instantaneamente ou organize seus atalhos.</p>
       </div>
@@ -1822,9 +1823,9 @@ mark.hl {
   const SORT_KEY = 'centralAplicacoes.sort.v1';
   const AUTH_KEY = 'centralAplicacoes.auth.v1';
 
-  /* Credenciais exigidas */
-  const VALID_USER = 'atila camargo';
-  const VALID_PASS = '2704';
+  /* Hashes SHA-256 das credenciais (não expõe o login nem a senha em texto puro no código) */
+  const VALID_USER_HASH = '1b853fd481a9c5a9739c576e5eb0ad492a9b549a6b310d8fd7f73a9ca0ff9c6e';
+  const VALID_PASS_HASH = '962e5500894997b188be964a0267f36c0770eb9d01a85f7bc8406cbff98bd42b';
 
   /* Todos os 15 links padrão originais rigorosamente preservados */
   const DEFAULT_LINKS = [
@@ -1922,7 +1923,7 @@ mark.hl {
   let pendingImportLinks = null;
   let currentView = loadPref(VIEW_KEY, 'grid');
 
-  /* Funções de Autenticação */
+  /* Funções de Autenticação com SHA-256 */
   function normalizeUser(str) {
     return String(str || '')
       .trim()
@@ -1932,9 +1933,17 @@ mark.hl {
       .replace(/\s+/g, ' ');
   }
 
+  async function sha256Hex(text) {
+    const data = new TextEncoder().encode(text);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    return Array.from(new Uint8Array(hashBuffer))
+      .map(b => b.toString(16).padStart(2, '0'))
+      .join('');
+  }
+
   function checkStoredAuth() {
     try {
-      return sessionStorage.getItem(AUTH_KEY) === 'true' || localStorage.getItem(AUTH_KEY) === 'true';
+      return sessionStorage.getItem(AUTH_KEY) === VALID_USER_HASH || localStorage.getItem(AUTH_KEY) === VALID_USER_HASH;
     } catch {
       return false;
     }
@@ -1967,24 +1976,29 @@ mark.hl {
     els.loginPass.focus();
   });
 
-  els.loginForm.addEventListener('submit', e => {
+  els.loginForm.addEventListener('submit', async e => {
     e.preventDefault();
     const typedUser = normalizeUser(els.loginUser.value);
     const typedPass = String(els.loginPass.value || '').trim();
 
-    if (typedUser === VALID_USER && typedPass === VALID_PASS) {
+    const [userHash, passHash] = await Promise.all([
+      sha256Hex(typedUser),
+      sha256Hex(typedPass)
+    ]);
+
+    if (userHash === VALID_USER_HASH && passHash === VALID_PASS_HASH) {
       try {
-        sessionStorage.setItem(AUTH_KEY, 'true');
+        sessionStorage.setItem(AUTH_KEY, VALID_USER_HASH);
         if (els.rememberMe.checked) {
-          localStorage.setItem(AUTH_KEY, 'true');
+          localStorage.setItem(AUTH_KEY, VALID_USER_HASH);
         } else {
           localStorage.removeItem(AUTH_KEY);
         }
       } catch {}
       unlockApp();
-      showToast('👋 Bem-vindo, Átila Camargo!');
+      showToast('🔓 Acesso liberado.');
     } else {
-      els.loginError.textContent = 'Usuário ou senha incorretos. Acesso permitido apenas para Átila Camargo.';
+      els.loginError.textContent = 'Usuário ou senha incorretos.';
       els.loginError.classList.add('show');
       els.loginForm.classList.remove('shake');
       void els.loginForm.offsetWidth;
