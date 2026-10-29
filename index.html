@@ -77,6 +77,16 @@ body {
   transition: background 0.2s, color 0.2s;
 }
 
+body.locked {
+  overflow: hidden;
+}
+
+body.locked .app {
+  filter: blur(14px);
+  pointer-events: none;
+  user-select: none;
+}
+
 button, input, select, textarea {
   font: inherit;
 }
@@ -88,6 +98,146 @@ button {
 button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, .link-card:focus-visible, .stat:focus-visible {
   outline: 2px solid var(--accent2);
   outline-offset: 2px;
+}
+
+/* TELA DE LOGIN */
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(6, 11, 22, 0.78);
+  backdrop-filter: blur(16px);
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+:root[data-theme="light"] .login-overlay {
+  background: rgba(243, 246, 251, 0.82);
+}
+
+.login-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.login-card {
+  width: min(100%, 400px);
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 28px 26px 24px;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.45);
+  animation: loginAppear 0.25s ease-out;
+}
+
+@keyframes loginAppear {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes shakeError {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.login-card.shake {
+  animation: shakeError 0.35s ease;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.login-logo {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 12px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #8795ff, #4f62e0);
+  color: white;
+  box-shadow: 0 10px 24px rgba(91, 109, 232, 0.35);
+}
+
+.login-logo svg {
+  width: 26px;
+  height: 26px;
+}
+
+.login-header h2 {
+  margin: 0 0 5px;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+}
+
+.login-header p {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.password-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrap input {
+  padding-right: 44px;
+}
+
+.toggle-pass-btn {
+  position: absolute;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+}
+
+.toggle-pass-btn:hover {
+  color: var(--text);
+  background: var(--panel2);
+}
+
+.toggle-pass-btn svg {
+  width: 17px;
+  height: 17px;
+}
+
+.login-remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0 18px;
+  font-size: 12.5px;
+  color: var(--muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+.login-remember input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.login-submit {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
 }
 
 mark.hl {
@@ -102,6 +252,7 @@ mark.hl {
   max-width: 1260px;
   margin: 0 auto;
   padding: 20px 22px 54px;
+  transition: filter 0.25s ease;
 }
 
 /* Topbar compacta e integrada */
@@ -219,6 +370,11 @@ mark.hl {
 .btn-danger {
   color: var(--danger);
   border-color: rgba(255, 138, 138, 0.3);
+}
+
+.btn-danger:hover {
+  border-color: var(--danger);
+  background: var(--danger-soft);
 }
 
 .kbd-badge {
@@ -341,7 +497,6 @@ mark.hl {
   color: var(--muted);
 }
 
-/* Remove o X nativo do input search para usar o nosso customizado */
 .search-wrap input::-webkit-search-cancel-button {
   -webkit-appearance: none;
   appearance: none;
@@ -488,7 +643,7 @@ mark.hl {
   font-variant-numeric: tabular-nums;
 }
 
-/* Seção de Acesso Rápido (Favoritos / Mais usados) */
+/* Seção de Acesso Rápido */
 .pinned-section {
   margin-bottom: 20px;
   padding: 13px 15px;
@@ -1329,7 +1484,51 @@ mark.hl {
 }
 </style>
 </head>
-<body>
+<body class="locked">
+
+<!-- TELA DE AUTENTICAÇÃO (LOGIN) -->
+<div id="loginOverlay" class="login-overlay" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+  <form id="loginForm" class="login-card" novalidate>
+    <div class="login-header">
+      <div class="login-logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+      </div>
+      <h2 id="loginTitle">Acesso Restrito</h2>
+      <p>Entre com suas credenciais para acessar a Central de Aplicações</p>
+    </div>
+
+    <div id="loginError" class="form-error" role="alert"></div>
+
+    <div class="field">
+      <label for="loginUser">Nome de login</label>
+      <input id="loginUser" type="text" placeholder="Digite seu usuário" autocomplete="username" required>
+    </div>
+
+    <div class="field">
+      <label for="loginPass">Senha</label>
+      <div class="password-wrap">
+        <input id="loginPass" type="password" placeholder="••••" autocomplete="current-password" required>
+        <button id="togglePassBtn" class="toggle-pass-btn" type="button" title="Mostrar ou ocultar senha" aria-label="Mostrar senha">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <label class="login-remember">
+      <input id="rememberMe" type="checkbox">
+      <span>Manter conectado neste navegador</span>
+    </label>
+
+    <button type="submit" class="btn btn-primary login-submit">Entrar na Central</button>
+  </form>
+</div>
+
 <div class="app">
   <!-- Barra de topo compacta com ação primária imediata -->
   <header class="topbar">
@@ -1343,7 +1542,7 @@ mark.hl {
         </svg>
       </div>
       <div class="brand-text">
-        <small>Espaço de trabalho</small>
+        <small>Espaço de trabalho · Átila Camargo</small>
         <h1>Central de Aplicações</h1>
         <p>Clique em qualquer card para abrir instantaneamente ou organize seus atalhos.</p>
       </div>
@@ -1372,6 +1571,14 @@ mark.hl {
       <input id="importFile" type="file" accept="application/json,.json">
       <button id="themeBtn" class="icon-btn" type="button" aria-label="Alternar modo claro e escuro" title="Alternar tema claro/escuro">
         <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></svg>
+      </button>
+      <button id="logoutBtn" class="btn btn-quiet btn-danger" type="button" title="Bloquear e sair da sessão">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+          <polyline points="16 17 21 12 16 7"/>
+          <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+        <span class="label">Sair</span>
       </button>
     </div>
   </header>
@@ -1457,7 +1664,7 @@ mark.hl {
     <!-- Chips de Categorias -->
     <nav id="categoryRow" class="category-row" aria-label="Filtrar por categoria"></nav>
 
-    <!-- Barra de Acesso Rápido (exibida automaticamente quando há Favoritos ou Mais Acessados) -->
+    <!-- Barra de Acesso Rápido -->
     <section id="pinnedSection" class="pinned-section" style="display:none" aria-label="Acesso rápido">
       <div class="pinned-head">
         <h3 id="pinnedTitle">⚡ Acesso Rápido</h3>
@@ -1540,7 +1747,7 @@ mark.hl {
   </form>
 </div>
 
-<!-- Modal de Importação Inteligente (Mesclar, Substituir ou Restaurar Padrões) -->
+<!-- Modal de Importação Inteligente -->
 <div id="importBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="importModalTitle">
   <div class="modal">
     <div class="modal-head">
@@ -1608,11 +1815,16 @@ mark.hl {
 (() => {
   'use strict';
 
-  /* Chaves originais preservadas para total compatibilidade */
+  /* Chaves originais preservadas + chave de autenticação */
   const STORAGE_KEY = 'centralAplicacoes.links.v1';
   const THEME_KEY = 'centralAplicacoes.theme.v1';
   const VIEW_KEY = 'centralAplicacoes.view.v1';
   const SORT_KEY = 'centralAplicacoes.sort.v1';
+  const AUTH_KEY = 'centralAplicacoes.auth.v1';
+
+  /* Credenciais exigidas */
+  const VALID_USER = 'atila camargo';
+  const VALID_PASS = '2704';
 
   /* Todos os 15 links padrão originais rigorosamente preservados */
   const DEFAULT_LINKS = [
@@ -1649,6 +1861,14 @@ mark.hl {
   const $ = id => document.getElementById(id);
 
   const els = {
+    loginOverlay: $('loginOverlay'),
+    loginForm: $('loginForm'),
+    loginUser: $('loginUser'),
+    loginPass: $('loginPass'),
+    loginError: $('loginError'),
+    rememberMe: $('rememberMe'),
+    togglePassBtn: $('togglePassBtn'),
+    logoutBtn: $('logoutBtn'),
     cards: $('cards'),
     categoryRow: $('categoryRow'),
     search: $('searchInput'),
@@ -1692,6 +1912,7 @@ mark.hl {
     themeIcon: $('themeIcon')
   };
 
+  let isAuthenticated = false;
   let links = loadLinks();
   let activeCategory = 'Todas';
   let favoritesOnly = false;
@@ -1700,6 +1921,82 @@ mark.hl {
   let lastDeleted = null;
   let pendingImportLinks = null;
   let currentView = loadPref(VIEW_KEY, 'grid');
+
+  /* Funções de Autenticação */
+  function normalizeUser(str) {
+    return String(str || '')
+      .trim()
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/\s+/g, ' ');
+  }
+
+  function checkStoredAuth() {
+    try {
+      return sessionStorage.getItem(AUTH_KEY) === 'true' || localStorage.getItem(AUTH_KEY) === 'true';
+    } catch {
+      return false;
+    }
+  }
+
+  function unlockApp() {
+    isAuthenticated = true;
+    document.body.classList.remove('locked');
+    els.loginOverlay.classList.add('hidden');
+    els.loginError.classList.remove('show');
+    els.loginPass.value = '';
+  }
+
+  function lockApp() {
+    isAuthenticated = false;
+    try {
+      sessionStorage.removeItem(AUTH_KEY);
+      localStorage.removeItem(AUTH_KEY);
+    } catch {}
+    document.body.classList.add('locked');
+    els.loginOverlay.classList.remove('hidden');
+    els.loginForm.reset();
+    els.loginError.classList.remove('show');
+    setTimeout(() => els.loginUser.focus(), 80);
+  }
+
+  els.togglePassBtn.addEventListener('click', () => {
+    const isPass = els.loginPass.type === 'password';
+    els.loginPass.type = isPass ? 'text' : 'password';
+    els.loginPass.focus();
+  });
+
+  els.loginForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const typedUser = normalizeUser(els.loginUser.value);
+    const typedPass = String(els.loginPass.value || '').trim();
+
+    if (typedUser === VALID_USER && typedPass === VALID_PASS) {
+      try {
+        sessionStorage.setItem(AUTH_KEY, 'true');
+        if (els.rememberMe.checked) {
+          localStorage.setItem(AUTH_KEY, 'true');
+        } else {
+          localStorage.removeItem(AUTH_KEY);
+        }
+      } catch {}
+      unlockApp();
+      showToast('👋 Bem-vindo, Átila Camargo!');
+    } else {
+      els.loginError.textContent = 'Usuário ou senha incorretos. Acesso permitido apenas para Átila Camargo.';
+      els.loginError.classList.add('show');
+      els.loginForm.classList.remove('shake');
+      void els.loginForm.offsetWidth;
+      els.loginForm.classList.add('shake');
+      els.loginPass.select();
+    }
+  });
+
+  els.logoutBtn.addEventListener('click', () => {
+    lockApp();
+    showToast('🔒 Sessão encerrada.');
+  });
 
   /* Utilitários de segurança e formatação */
   const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, ch => ({
@@ -1863,7 +2160,7 @@ mark.hl {
     return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name] || ''}</svg>`;
   }
 
-  /* Registra clique e abre o link (com suporte especial amigável a file://) */
+  /* Registra clique e abre o link */
   function triggerOpenLink(link) {
     if (!link) return;
     link.accessCount = (Number(link.accessCount) || 0) + 1;
@@ -1904,7 +2201,7 @@ mark.hl {
     els.statCatBtn.classList.toggle('active', activeCategory !== 'Todas' && !favoritesOnly);
   }
 
-  /* Renderiza a barra de acesso rápido (Favoritos ou Mais Usados) quando não há filtro ativo */
+  /* Renderiza a barra de acesso rápido */
   function renderPinnedBar() {
     const isFiltering = favoritesOnly || activeCategory !== 'Todas' || els.search.value.trim() !== '';
     if (isFiltering) {
@@ -1987,7 +2284,6 @@ mark.hl {
       els.categoryRow.append(b);
     });
 
-    /* Atualiza datalist e chips rápidos no modal */
     els.categoryOptions.replaceChildren();
     els.quickCatsContainer.replaceChildren();
     const allSuggestedCats = [...new Set([...cats, ...Object.keys(CATEGORY_META)])];
@@ -2034,7 +2330,6 @@ mark.hl {
     } else if (sortMode === 'name') {
       result.sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'));
     } else {
-      /* smart: Favoritos primeiro + ordem alfabética */
       result.sort((a, b) => (Number(!!b.favorite) - Number(!!a.favorite)) || a.name.localeCompare(b.name, 'pt-BR'));
     }
     return result;
@@ -2191,7 +2486,6 @@ mark.hl {
     els.error.classList.add('show');
   }
 
-  /* Sugere automaticamente um nome legível a partir da URL digitada */
   function suggestNameFromUrl(rawUrl) {
     const normalized = normalizeInputUrl(rawUrl);
     if (!normalized) return '';
@@ -2239,7 +2533,6 @@ mark.hl {
 
   els.category.addEventListener('input', updateQuickCatSelection);
 
-  /* Interações nos Cards (1 clique abre o card, botões secundários com stopPropagation) */
   function handleCardInteraction(e) {
     const actionBtn = e.target.closest('[data-action]');
     const card = e.target.closest('.link-card');
@@ -2296,7 +2589,6 @@ mark.hl {
       return;
     }
 
-    /* Clique em qualquer área livre do card abre imediatamente */
     triggerOpenLink(item);
   }
 
@@ -2312,7 +2604,6 @@ mark.hl {
     }
   });
 
-  /* Submissão do Formulário */
   els.form.addEventListener('submit', e => {
     e.preventDefault();
     els.error.classList.remove('show');
@@ -2369,7 +2660,6 @@ mark.hl {
     closeModal();
   });
 
-  /* Filtros Rápidos nos Cards de Estatísticas */
   els.statAllBtn.addEventListener('click', () => {
     favoritesOnly = false;
     activeCategory = 'Todas';
@@ -2409,7 +2699,6 @@ mark.hl {
     renderCards();
   });
 
-  /* Enter na busca abre diretamente o primeiro resultado */
   els.search.addEventListener('keydown', e => {
     if (e.key === 'Enter') {
       const results = currentLinks();
@@ -2441,7 +2730,6 @@ mark.hl {
     if (e.target === els.backdrop) closeModal();
   });
 
-  /* Exportação de Backup */
   $('exportBtn').addEventListener('click', () => {
     const blob = new Blob(
       [JSON.stringify({ app: 'Central de Aplicações', version: 2, exportedAt: new Date().toISOString(), links }, null, 2)],
@@ -2458,7 +2746,6 @@ mark.hl {
     showToast('📦 Backup exportado com sucesso');
   });
 
-  /* Modal de Importação e Restauração */
   function openImportModal() {
     pendingImportLinks = null;
     els.importStepSelect.style.display = 'block';
@@ -2561,8 +2848,10 @@ mark.hl {
     showToast(`✅ Lista substituída por ${links.length} links do backup.`);
   });
 
-  /* Atalhos Globais de Teclado */
+  /* Atalhos Globais de Teclado (bloqueados enquanto não autenticado) */
   document.addEventListener('keydown', e => {
+    if (!isAuthenticated) return;
+
     if (e.key === 'Escape') {
       closeModal();
       closeImportModal();
@@ -2614,6 +2903,12 @@ mark.hl {
   applyTheme(loadPref(THEME_KEY, 'dark'));
   applyViewMode(currentView);
   render();
+
+  if (checkStoredAuth()) {
+    unlockApp();
+  } else {
+    setTimeout(() => els.loginUser.focus(), 50);
+  }
 })();
 </script>
 </body>
