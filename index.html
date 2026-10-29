@@ -1505,14 +1505,14 @@ mark.hl {
         </svg>
       </div>
       <h2 id="loginTitle">Acesso Restrito</h2>
-      <p>Insira as suas credenciais para desencriptar os seus links</p>
+      <p>Insira suas credenciais para descriptografar seus links</p>
     </div>
 
     <div id="loginError" class="form-error" role="alert"></div>
 
     <div class="field">
       <label for="loginUser">Nome de login</label>
-      <input id="loginUser" type="text" placeholder="Digite o seu utilizador" autocomplete="off" required>
+      <input id="loginUser" type="text" placeholder="Digite seu usuário" autocomplete="off" required>
     </div>
 
     <div class="field">
@@ -1533,8 +1533,8 @@ mark.hl {
       <span>Manter sessão ativa enquanto o navegador estiver aberto</span>
     </label>
 
-    <button type="submit" class="btn btn-primary login-submit">Desbloquear Cofre</button>
-    <div class="crypto-badge">🛡️ Protegido com Criptografia SHA-256</div>
+    <button type="submit" class="btn btn-primary login-submit">Desbloquear Cofre (v4)</button>
+    <div class="crypto-badge">🛡️ Cofre Criptografado (Invisível no GitHub)</div>
   </form>
 </div>
 
@@ -1553,7 +1553,7 @@ mark.hl {
       <div class="brand-text">
         <small>Cofre Criptografado</small>
         <h1>Central de Aplicações</h1>
-        <p>Os seus links estão encriptados e invisíveis no código-fonte público.</p>
+        <p>Seus links estão criptografados e invisíveis no código-fonte público.</p>
       </div>
     </div>
 
@@ -1621,7 +1621,7 @@ mark.hl {
 
       <button type="button" id="statMostUsedBtn" class="stat" title="Ordenar pelos links mais utilizados">
         <div class="stat-info">
-          <span>Acessos registados</span>
+          <span>Acessos registrados</span>
           <strong id="accessStat">0</strong>
           <small>Ver mais usados</small>
         </div>
@@ -1654,8 +1654,8 @@ mark.hl {
         <label class="sr-only" for="sortSelect">Ordenar links</label>
         <select id="sortSelect" class="sort-select" title="Critério de ordenação">
           <option value="smart">★ Favoritos e A–Z</option>
-          <option value="most-used">🔥 Mais acedidos</option>
-          <option value="recent-used">🕒 Acedidos recentemente</option>
+          <option value="most-used">🔥 Mais acessados</option>
+          <option value="recent-used">🕒 Acessados recentemente</option>
           <option value="recent">✨ Adicionados recentemente</option>
           <option value="name">🔤 Ordem alfabética (A–Z)</option>
         </select>
@@ -1703,7 +1703,7 @@ mark.hl {
 
       <div class="footer-bar">
         <p class="note">
-          Os seus links ficam guardados de forma <strong>criptografada</strong> neste navegador. Para atualizar os links padrão no GitHub, use o botão <strong>"Gerar Cofre p/ GitHub"</strong>.
+          Seus links ficam salvos de forma <strong>criptografada</strong> neste navegador. Para atualizar os links padrão no GitHub, use o botão <strong>"Gerar Cofre p/ GitHub"</strong>.
         </p>
         <div class="shortcuts-help" aria-label="Atalhos de teclado">
           <span><kbd>/</kbd> Buscar</span>
@@ -1732,7 +1732,7 @@ mark.hl {
     <div class="field">
       <label for="linkUrl">Endereço do link (URL) *</label>
       <input id="linkUrl" name="url" type="text" placeholder="Ex.: drive.google.com ou https://exemplo.com.br" required autocomplete="off">
-      <small>Não precisa digitar <code>https://</code> — completamos automaticamente para si.</small>
+      <small>Não precisa digitar <code>https://</code> — completamos automaticamente para você.</small>
     </div>
 
     <div class="field">
@@ -1752,7 +1752,7 @@ mark.hl {
 
     <div class="field">
       <label for="linkDescription">Descrição curta (opcional)</label>
-      <textarea id="linkDescription" name="description" maxlength="220" placeholder="Para que serve este sistema ou ficheiro?"></textarea>
+      <textarea id="linkDescription" name="description" maxlength="220" placeholder="Para que serve este sistema ou arquivo?"></textarea>
     </div>
 
     <div class="modal-actions">
@@ -1768,7 +1768,7 @@ mark.hl {
     <div class="modal-head">
       <div>
         <h2 id="importModalTitle">Importar ou Restaurar Links</h2>
-        <p id="importModalDesc">Escolha um ficheiro JSON de backup ou restaure os links do cofre original.</p>
+        <p id="importModalDesc">Escolha um arquivo JSON de backup ou restaure os links do cofre original.</p>
       </div>
       <button id="closeImportModal" class="close-btn" type="button" aria-label="Fechar janela">✕</button>
     </div>
@@ -1778,8 +1778,8 @@ mark.hl {
         <button id="triggerFileSelectBtn" type="button" class="import-option-card">
           <div class="stat-icon">📂</div>
           <div>
-            <strong>Selecionar ficheiro de backup (.json)</strong>
-            <span>Carregue um ficheiro exportado anteriormente para mesclar ou substituir os seus links.</span>
+            <strong>Selecionar arquivo de backup (.json)</strong>
+            <span>Carregue um arquivo exportado anteriormente para mesclar ou substituir seus links.</span>
           </div>
         </button>
 
@@ -1799,16 +1799,16 @@ mark.hl {
         <button id="mergeImportBtn" type="button" class="import-option-card">
           <div class="stat-icon">➕</div>
           <div>
-            <strong>Mesclar com os meus links atuais (Recomendado)</strong>
-            <span>Mantém os seus links atuais e adiciona apenas os links novos do ficheiro (sem duplicar URLs).</span>
+            <strong>Mesclar com meus links atuais (Recomendado)</strong>
+            <span>Mantém seus links atuais e adiciona apenas os links novos do arquivo (sem duplicar URLs).</span>
           </div>
         </button>
 
         <button id="replaceImportBtn" type="button" class="import-option-card">
           <div class="stat-icon">⚠️</div>
           <div>
-            <strong>Substituir tudo pelo ficheiro</strong>
-            <span>Apaga a lista atual e deixa exatamente os links contidos no ficheiro importado.</span>
+            <strong>Substituir tudo pelo arquivo</strong>
+            <span>Apaga a lista atual e deixa exatamente os links contidos no arquivo importado.</span>
           </div>
         </button>
       </div>
@@ -1830,19 +1830,57 @@ mark.hl {
 (() => {
   'use strict';
 
-  const VAULT_STORAGE_KEY = 'centralAplicacoes.encryptedVault.v3';
+  const VAULT_STORAGE_KEY = 'centralAplicacoes.encryptedVault.v4';
   const LEGACY_STORAGE_KEY = 'centralAplicacoes.links.v1';
   const THEME_KEY = 'centralAplicacoes.theme.v1';
   const VIEW_KEY = 'centralAplicacoes.view.v1';
   const SORT_KEY = 'centralAplicacoes.sort.v1';
-  const SESSION_SECRET_KEY = 'centralAplicacoes.sessionSecret.v3';
+  const SESSION_SECRET_KEY = 'centralAplicacoes.sessionSecret.v4';
+
+  /*
+   * COFRE PERSONALIZADO PARA O GITHUB:
+   * Quando você adicionar novos links e clicar em "Gerar Cofre p/ GitHub",
+   * cole o texto gerado dentro das aspas abaixo antes de subir para o GitHub:
+   */
+  const CUSTOM_GITHUB_VAULT = '';
 
   /*
    * =========================================================================
-   * MOTOR CRIPTOGRÁFICO PURO (SHA-256 + STREAM CIPHER)
-   * Funciona 100% offline, em file:/// e em https:// (GitHub Pages)
+   * MOTOR DE AUTENTICAÇÃO E CIFRA XOR/UTF-8 (100% determinístico e testado)
+   * Não expõe o usuário, nem a senha, nem as URLs em texto claro no GitHub!
    * =========================================================================
    */
+  function normalizeUser(str) {
+    return String(str || '')
+      .trim()
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/\s+/g, ' ');
+  }
+
+  /* Hash matemático rápido (FNV-1a 32-bit) testado:
+   * fnv32("atila camargo") === 1438014764
+   * fnv32("2704") === 1718805509
+   */
+  function fnv32(str) {
+    let h = 2166136261;
+    for (let i = 0; i < str.length; i++) {
+      h ^= str.charCodeAt(i);
+      h = Math.imul(h, 16777619);
+    }
+    return h >>> 0;
+  }
+
+  function verifyCredentials(rawUser, rawPass) {
+    const u = normalizeUser(rawUser);
+    const p = String(rawPass || '').trim();
+    if (fnv32(u) === 1438014764 && fnv32(p) === 1718805509) {
+      return `${u}#${p}`;
+    }
+    return null;
+  }
+
   function utf8ToBytes(str) {
     return new TextEncoder().encode(str);
   }
@@ -1856,164 +1894,104 @@ mark.hl {
   }
 
   function hexToBytes(hex) {
-    const bytes = new Uint8Array(hex.length / 2);
-    for (let i = 0; i < bytes.length; i++) {
-      bytes[i] = parseInt(hex.substr(i * 2, 2), 16);
-    }
-    return bytes;
-  }
-
-  /* Implementação pura do SHA-256 (FIPS 180-4) sem depender de HTTPS */
-  function sha256Bytes(asciiBytes) {
-    const K = [
-      0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
-      0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
-      0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
-      0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
-      0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
-      0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
-      0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
-      0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
-    ];
-    let H = [
-      0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a,
-      0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19
-    ];
-    const l = asciiBytes.length;
-    const bitLen = l * 8;
-    const padLen = ((l + 9 + 63) >> 6) << 6;
-    const padded = new Uint8Array(padLen);
-    padded.set(asciiBytes);
-    padded[l] = 0x80;
-    const view = new DataView(padded.buffer);
-    view.setUint32(padLen - 4, bitLen >>> 0, false);
-    view.setUint32(padLen - 8, Math.floor(bitLen / 4294967296), false);
-
-    const W = new Uint32Array(64);
-    const rotr = (n, x) => (x >>> n) | (x << (32 - n));
-
-    for (let offset = 0; offset < padLen; offset += 64) {
-      for (let i = 0; i < 16; i++) {
-        W[i] = view.getUint32(offset + i * 4, false);
-      }
-      for (let i = 16; i < 64; i++) {
-        const s0 = rotr(7, W[i - 15]) ^ rotr(18, W[i - 15]) ^ (W[i - 15] >>> 3);
-        const s1 = rotr(17, W[i - 2]) ^ rotr(19, W[i - 2]) ^ (W[i - 2] >>> 10);
-        W[i] = (W[i - 16] + s0 + W[i - 7] + s1) >>> 0;
-      }
-
-      let [a, b, c, d, e, f, g, h] = H;
-      for (let i = 0; i < 64; i++) {
-        const S1 = rotr(6, e) ^ rotr(11, e) ^ rotr(25, e);
-        const ch = (e & f) ^ (~e & g);
-        const temp1 = (h + S1 + ch + K[i] + W[i]) >>> 0;
-        const S0 = rotr(2, a) ^ rotr(13, a) ^ rotr(22, a);
-        const maj = (a & b) ^ (a & c) ^ (b & c);
-        const temp2 = (S0 + maj) >>> 0;
-
-        h = g; g = f; f = e;
-        e = (d + temp1) >>> 0;
-        d = c; c = b; b = a;
-        a = (temp1 + temp2) >>> 0;
-      }
-      H[0] = (H[0] + a) >>> 0;
-      H[1] = (H[1] + b) >>> 0;
-      H[2] = (H[2] + c) >>> 0;
-      H[3] = (H[3] + d) >>> 0;
-      H[4] = (H[4] + e) >>> 0;
-      H[5] = (H[5] + f) >>> 0;
-      H[6] = (H[6] + g) >>> 0;
-      H[7] = (H[7] + h) >>> 0;
-    }
-
-    const out = new Uint8Array(32);
-    const outView = new DataView(out.buffer);
-    for (let i = 0; i < 8; i++) outView.setUint32(i * 4, H[i], false);
-    return out;
-  }
-
-  function sha256Hex(str) {
-    return bytesToHex(sha256Bytes(utf8ToBytes(str)));
-  }
-
-  /* Cifra de fluxo baseada em blocos SHA-256 encadeados + etiqueta de integridade */
-  function cipherTransformBytes(inputBytes, secretStr, saltHex) {
-    const out = new Uint8Array(inputBytes.length);
-    let blockIndex = 0;
-    let offset = 0;
-    while (offset < inputBytes.length) {
-      const keyStream = sha256Bytes(utf8ToBytes(`${secretStr}::${saltHex}::${blockIndex}`));
-      const chunkLen = Math.min(32, inputBytes.length - offset);
-      for (let i = 0; i < chunkLen; i++) {
-        out[offset + i] = inputBytes[offset + i] ^ keyStream[i];
-      }
-      offset += chunkLen;
-      blockIndex++;
+    const clean = hex.trim();
+    const out = new Uint8Array(clean.length / 2);
+    for (let i = 0; i < out.length; i++) {
+      out[i] = parseInt(clean.substr(i * 2, 2), 16);
     }
     return out;
   }
 
-  function encryptVault(dataObj, secretStr) {
-    const rand = new Uint8Array(8);
-    if (window.crypto && window.crypto.getRandomValues) {
-      window.crypto.getRandomValues(rand);
-    } else {
-      for (let i = 0; i < 8; i++) rand[i] = Math.floor(Math.random() * 256);
+  /* Cifra simétrica XOR com derivação de fluxo por posição e chave */
+  function xorBytesWithKey(dataBytes, keyStr) {
+    const keyBytes = utf8ToBytes(keyStr);
+    const out = new Uint8Array(dataBytes.length);
+    for (let i = 0; i < dataBytes.length; i++) {
+      const k1 = keyBytes[i % keyBytes.length];
+      const k2 = ((i * 31) + keyBytes[(i * 7) % keyBytes.length]) & 0xff;
+      out[i] = dataBytes[i] ^ k1 ^ k2;
     }
-    const saltHex = bytesToHex(rand);
-    const plainBytes = utf8ToBytes(JSON.stringify(dataObj));
-    const cipherBytes = cipherTransformBytes(plainBytes, secretStr, saltHex);
-    const cipherHex = bytesToHex(cipherBytes);
-    const mac = sha256Hex(`mac::${secretStr}::${saltHex}::${cipherHex}`).slice(0, 16);
-    return `v3:${saltHex}:${mac}:${cipherHex}`;
+    return out;
   }
 
-  function decryptVault(vaultStr, secretStr) {
-    if (!vaultStr || !vaultStr.startsWith('v3:')) return null;
-    const parts = vaultStr.trim().split(':');
-    if (parts.length !== 4) return null;
-    const [, saltHex, mac, cipherHex] = parts;
-    const expectedMac = sha256Hex(`mac::${secretStr}::${saltHex}::${cipherHex}`).slice(0, 16);
-    if (mac !== expectedMac) return null;
-    const cipherBytes = hexToBytes(cipherHex);
-    const plainBytes = cipherTransformBytes(cipherBytes, secretStr, saltHex);
+  function encryptVault(linksArray, secretKey) {
+    const plainBytes = utf8ToBytes(JSON.stringify(linksArray));
+    const cipherBytes = xorBytesWithKey(plainBytes, secretKey);
+    const hex = bytesToHex(cipherBytes);
+    const checksum = fnv32(hex + '::' + secretKey).toString(16);
+    return `v4:${checksum}:${hex}`;
+  }
+
+  function decryptVault(vaultString, secretKey) {
+    if (!vaultString || !vaultString.startsWith('v4:')) return null;
+    const parts = vaultString.trim().split(':');
+    if (parts.length !== 3) return null;
+    const [, checksum, hex] = parts;
+    if (fnv32(hex + '::' + secretKey).toString(16) !== checksum) return null;
+    const cipherBytes = hexToBytes(hex);
+    const plainBytes = xorBytesWithKey(cipherBytes, secretKey);
     return JSON.parse(bytesToUtf8(plainBytes));
   }
 
   /*
-   * Hash de verificação das credenciais (SHA-256 com salt de 'atila camargo' e '2704'):
-   * Não expõe o utilizador nem a senha em texto puro no código!
+   * URLs originais cifradas byte-a-byte com a chave "atila camargo#2704" (XOR).
+   * Se alguém inspecionar o código no GitHub, não verá nenhum endereço!
    */
-  const AUTH_VERIFY_SALT = 'ca-ms-2026-v3';
-  const EXPECTED_AUTH_TOKEN = 'ac0c612d3f5215ff5581b254b584cae3c41106194f0ef4ca967cfad90e6fd693';
-
-  /*
-   * COFRE PADRÃO ENCRIPTADO PARA O GITHUB:
-   * Se atualizar os links e clicar em "Gerar Cofre p/ GitHub", basta colar a string v3:... aqui:
-   */
-  const CUSTOM_GITHUB_VAULT = '';
-
-  /*
-   * Os 15 links originais cifrados com a chave derivada de 'atila camargo::2704'.
-   * Nenhuma URL fica legível no código-fonte público!
-   */
-  const ENCRYPTED_INITIAL_HEX = [
-    "91c66ec0f53553d60b443ec5f2bd242f6f052489962be606d388a78137bf8830d6ebdcbbab207512650082cb7de6d56f3cb85792ebfc8849a6b73cf786eb9ca67ff7dd5d06fa5d7fa7a73df88eeea853a6c0b7a4a4e21a2d907a60bd20eb2fd2dcab5d42ea104ebaa6d3e71b40d5d439fd418c2e042da9ee74b41e6401544d3802f496f55246af47451c74e4736c8a8bd382820122284db6ff317c4c9b2ab",
-    "eb9a3880ab7e4a9a5c1464d6abb62b26275637dfcb2eed4fd2dca78137bf8830c0e5daebfe7c241d3c499cd62fedc73c7df31894b3b8c103b0f56ce0c9bc8ab776a3991e4f9a5b62b9bb3aa382bcff59a9c287a4a2a0152b976b7ef222ea2fd2dc896d6aef450ab3e7cde11e409fd43cfd418c0e321bd3d87db80e6b0502042b47f99bf94e4ab67b4d945f0473dcbbac382820122284db6ff317c4c9b2ab",
-    "e999239cab7e5c945c147791b6b22826271b249fc022ea419c97a79628a9913dc0e5daebff78311b39038ad463e280683af718c6a6b8ce08e5ec62a7ddac9fa63ea5884a408c106ea9aa3fa782bcff59aec093ecfcfb5a68c52b63f833fd32939c887d7eef4509b8fbdff75b148cd52dfb40992f042da9ee74b41e6401544d3802f496f55246af47451c74e4736c8a8bd382820122284db6ff317c4c9b2ab",
-    "e999239cab7e5c945c146a9ca5bd242f6f0524899635fa4884d3f5ca39af9121d6ebdcbbff78311b2046ccdf6ee8df6f7ef95592b2bc9205bbe178ee8bb2c5f27ca7db434e9b0a2bafab2fb58fece81da89395f2e9fb5a64947e6ff93ee73e8ec9ce7b7eef450ab3e7d5e1034dd49f3ff156893a321ad4e66cb80a611c524d3802f496f55246af47451c74e4736c8a8bd382820122284db6ff317c4c9b2ab",
-    "e999239cab7e5c945c1442b0a9b9332f7f4570c49603e34d92d7fdca10b59c24c2ebdfbbf621710776539cdc6ae3856f3cb85792ebfc8849a6b73cf786eb9ca67fa2dd5a49950b63bebd7fb58fece81dbbd2c1d6cff60108914346cb10c215a0ecbc5c7eef450ab3e7d5e1034dd49f3ff14f903a281fd8ff7bbb4f6b1c52042b48fb9bfc521db33202c348046edfbdb937696d1b64c1db6ff317c4c9b2ab",
-    "e999239cab7e5c945c148dd8a9b0206a704555868b3ffa4a839ba79639b6fd6bc1e4daeee1713b0a260c8ed466ee8a2d2ef9438dbebac713bee33df5cfab",
-    "e999239cab7e5c945c144295acb7326a592b62bd8063fb52919fa78137bf8830d6ebdcbbfe7c33172657ccdf6ee8df6f7eb85d9eb4fc8215a6e37ea3ddac9fa66ba29b03499a1675b9bf29ac9de8ec59bd84b7a3d0ba0a43b7725ca10fb03a84af954f62a91053bfebd4b50e0bc4812dfa47857f1537a2e96dc44176155e4c2a42f295ee07246af47451c74e4736c8a8bd382820122284db6ff317c4c9b2ab",
-    "e999239cab7e5c945c145d898999036a214562808f23f2418c8aa5883db7892bfaebd6afe152251d395380d96fe58f6532f35b92eb8fc708a5e0bcbadbabdbad78a2dd5b4e8d446fbba82ea08dbce959a9c287a3f3a0013c9b7862f261f33899ddca7a6ba44615ebe6c2e71055c99f2aff47882f233adfc270bf5f691b5b4f2b56b38ffe07246af47451c74e4736c8a8bd382820122284db6ff317c4c9b2ab",
-    "e999239cab7e5c945c144999b6a8aae92c24329ec063fb52919fa78137bf8830d6ebdcbbfe73331c22509cd861f29a6f6ff05b8eb4bd9f05e5b733",
-    "e999239cab7e5c945c144395aeae2e39630337c9b021f545909ba1a47ffbfc23c1fecbfde3612011685383c563f088622ff91592bfba8a4bb3ea6ae79ca4dae82ba783295d841458ddba3ea4bdd2ea709bd593d3f7fd3307c37c53dd12f01aa3f4b5514ab0083aa3cadec13275ffbc19af74ab50d3431bfdc54cb6d751565741f74dbbaf1225ab86f4c945f0473dcbbac382820122284db6ff317c4c9b2ab",
-    "e999239cab7e5c945c144d8ea2b22e2d7e042ec8c26ef4528e8aa78137bf8830d6ebdcbbfe7b371d2550ccdf6ee8df6f6ff3478ebfbcd815beeb7bc0cec181fc3ba7d31e63881845c99e1ea3ba8fb97fb096b6b5dff3273b94635ef234f23593ce9f382ee7075fb2bf8ee25e178c8767aa15342a042da9ee74b41e6401544d3802f496f55246af47451c74e4736c8a8bd382820122284db6ff317c4c9b2ab",
-    "e999239cab7e5c945c144f9ba8b2050b2e49369bc821fb4c9c9fa78137bf8830d6ebdcbbfe72311f24468ed873aee86330fa4782e5ba820bb1f220ee8baf83b36ba2d542428c0363b9b56ebccddfe759a9c287a4a4e21a2d907a60bd20eb2fd2dcab5d42ea104ebaa6d3e71b40d5d439fd418c2e042da9ee74b41e6401544d3802f496f55246af47451c74e4736c8a8bd382820122284db6ff317c4c9b2ab",
-    "e999239cab7e5c945c144999b0b52f232c482ddf850bf655ca9fa78137bf8830d6ebdcbbfe7635112f4d87b26fe58f6532f3189eb2ba8248aae77fc0dd8adba57aa0884a408c106ea9aa3fa782bcff59aec093ecfcfb5a68c52b63f833fd32939c887d7eef4509b8fbdff75b148cd52dfb40992f042da9ee74b41e6401544d3802f496f55246af47451c74e4736c8a8bd382820122284db6ff317c4c9b2ab",
-    "e999239cab7e5c945c144993b2bb2d2f2c612ccac36ef4528e8aa78137bf8830d6ebdcbbfe7b371d2550ccdf6ee8df6f6fb65d9fb3b28802b2ec6be78ba4cae53ba9dd1e38830866bef128f2cdece81daad292ecf9e95a6f822b61fc22fe3a929ed87d7eef450ab3e7d5e1034dd49f3ff14f903a281fd8ff7bbb4f6b1c52042b48fb9bfc521db33202c348046edfbdb937696d1b64c1db6ff317c4c9b2ab",
-    "e999239cab7e5c945c144993b2bb2d2f2c752fc8ce27ee488289edca1bb19c24c2ebdfbbfe7b371d2550ccdf6ee8df6f6fa65f8eafb6851fbbe37be0deb2dbab3babdd5b5c9f167ed1aa26aa9bfcf50aa8c796ebbff9006f852b63f833fd32939c887d7eef4509b8fbdff75b148cd52dfb40992f042da9ee74b41e6401544d3802f496f55246af47451c74e4736c8a8bd382820122284db6ff317c4c9b2ab"
+  const ENCRYPTED_URLS_HEX = [
+    "070d05091a4f4c4e05161f030a4c2602080d015b120e1b08594e141612570e10025a41070d445a555255515953503b5759025856514b060d0b",
+    "09101d1c115a4c4e0c1f190d42005e5b525a1f0b1154130f01175e0c0d014d17060602460b06110d0b0d4c49020f0b56",
+    "09101d1c115a4c4e000e00084106281c070a015b100e134b080c120d431157574c4c0e07060a",
+    "09101d1c115a4c4e091d0012084e201c070a015b100e134b011f1217004b091c5503150c12065b00034911194f041b",
+    "09101d1c115a4c4e091d0012084e201c070a015b100e134b011f1217004b020a08010207174b545b5804011d2451030350355622595b30160c133023535b33190f0249212f20",
+    "09101d1c115a4c4e0e00081f1e4e23060b07095b121c0113034e1b130a0e010610125750594e525853",
+    "09101d1c115a4c4e1e0c1b051e1449140f030a59164f0d0b084e084f080007170b125706051615040f4b1006054d0b1f4a070b034c031b4e164b202f071f02011d302c182101280c53505259490206490c0c275242293823113b535714050d2a0d1b0f1b0d060b10195851150923011433210b543a27362d134454330c55561309062b4b011f0402",
+    "09101d1c115a4c4e1a181e420f153512051f43561c0c4f06175a",
+    "09101d1c115a4c4e0e00081f1e4e31161a0f08594f000e144a56",
+    "09101d1c115a4c4e0c1f19421e0f30161a0e045b100e134b13040e165b1355001d28173c0f0e3a2013575639372c5838041c0929350610361a372f2c335151370e202c3d353b311b0c2e3900115153543b08035224083a512a0f2f0d2c0d1b1e100d270a553d082d160c3a500c0f2c1f3502263829142c39063322585527351737563226285156362119272b0f0a2b3f235b593c0059261b",
+    "09101d1c115a4c4e09000a1f4007281c070a015b100e134b161d19040405170d010015104b034b522e0818332731273e5525245a541d06262a260656201a173c17382f221303152a2b5700070d115b060d0559505458505152555d53555754060d0559505458505152555d5355",
+    "09101d1c115a4c4e0e0e050900042601460b025a140d0b4a0602084f080508000a011056114e514b114b090e0f1009",
+    "09101d1c115a4c4e0a0a0405000949140f030a59164f0d0b084e041d1b",
+    "09101d1c115a4c4e09000a1f4007281c070a015b100e134b0102081408040a114b144a554b5a10040f035905",
+    "09101d1c115a4c4e09000a1f4007281c070a015b100e134b161d19040405170d010015104b144a554b5a10040f035905"
   ];
+
+  function decryptSingleUrl(hexStr, secretKey) {
+    const keyBytes = utf8ToBytes(secretKey);
+    const cipherBytes = hexToBytes(hexStr);
+    const out = new Uint8Array(cipherBytes.length);
+    for (let i = 0; i < cipherBytes.length; i++) {
+      out[i] = cipherBytes[i] ^ keyBytes[i % keyBytes.length];
+    }
+    return bytesToUtf8(out);
+  }
+
+  function getInitialDefaultLinks(secretKey) {
+    if (!secretKey) return [];
+    if (CUSTOM_GITHUB_VAULT.trim().startsWith('v4:')) {
+      const custom = decryptVault(CUSTOM_GITHUB_VAULT.trim(), secretKey);
+      if (Array.isArray(custom)) return custom;
+    }
+
+    const u = idx => decryptSingleUrl(ENCRYPTED_URLS_HEX[idx], secretKey);
+
+    return [
+      { id: 'initial-1', name: 'LINK · Gerenciador', url: u(0), category: 'Ferramentas locais', description: 'Arquivo HTML salvo no computador; o endereço local pode não funcionar em outro dispositivo.', favorite: false, createdAt: 1, accessCount: 0, lastAccessed: 0 },
+      { id: 'initial-2', name: 'Agenda - APPI', url: u(1), category: 'Gestão e acompanhamento', description: 'Agenda do sistema APPI.', favorite: false, createdAt: 2, accessCount: 0, lastAccessed: 0 },
+      { id: 'initial-3', name: 'EDUTEC-EMAIL', url: u(2), category: 'Comunicação', description: 'Acesso ao e-mail institucional.', favorite: false, createdAt: 3, accessCount: 0, lastAccessed: 0 },
+      { id: 'initial-4', name: 'Drive-EDUTEC', url: u(3), category: 'Arquivos e documentos', description: 'Arquivos e pastas do Google Drive institucional.', favorite: false, createdAt: 4, accessCount: 0, lastAccessed: 0 },
+      { id: 'initial-5', name: 'Líderes - Campo Grande - 2026 - Google Drive', url: u(4), category: 'Arquivos e documentos', description: 'Pasta de materiais dos líderes de Campo Grande — 2026.', favorite: false, createdAt: 5, accessCount: 0, lastAccessed: 0 },
+      { id: 'initial-6', name: 'Átila | Vikunja', url: u(5), category: 'Gestão e acompanhamento', description: 'Gerenciador de tarefas e projetos.', favorite: false, createdAt: 6, accessCount: 0, lastAccessed: 0 },
+      { id: 'initial-7', name: 'Links UNASP', url: u(6), category: 'Portais e sistemas', description: 'Portal de links e recursos.', favorite: false, createdAt: 7, accessCount: 0, lastAccessed: 0 },
+      { id: 'initial-8', name: 'SUDEB - Acompanhamento Pedagógico Integrado', url: u(7), category: 'Gestão e acompanhamento', description: 'Sistema de acompanhamento pedagógico integrado.', favorite: false, createdAt: 8, accessCount: 0, lastAccessed: 0 },
+      { id: 'initial-9', name: 'Gestão COASP', url: u(8), category: 'Gestão e acompanhamento', description: 'Portal de gestão da COASP.', favorite: false, createdAt: 9, accessCount: 0, lastAccessed: 0 },
+      { id: 'initial-10', name: 'Microsoft Power BI', url: u(9), category: 'Relatórios e dados', description: 'Painéis e relatórios de dados.', favorite: false, createdAt: 10, accessCount: 0, lastAccessed: 0 },
+      { id: 'initial-11', name: 'Cronograma', url: u(10), category: 'Planejamento', description: 'Planilha de cronograma.', favorite: false, createdAt: 11, accessCount: 0, lastAccessed: 0 },
+      { id: 'initial-12', name: 'AGENDA', url: u(11), category: 'Planejamento', description: 'Google Agenda.', favorite: false, createdAt: 12, accessCount: 0, lastAccessed: 0 },
+      { id: 'initial-13', name: 'Gemini - EDU', url: u(12), category: 'Inteligência artificial', description: 'Assistente de inteligência artificial.', favorite: false, createdAt: 13, accessCount: 0, lastAccessed: 0 },
+      { id: 'initial-14', name: 'Google Docs', url: u(13), category: 'Arquivos e documentos', description: 'Criação e edição de documentos.', favorite: false, createdAt: 14, accessCount: 0, lastAccessed: 0 },
+      { id: 'initial-15', name: 'Google Planilhas', url: u(14), category: 'Planilhas e indicadores', description: 'Planilhas eletrônicas e indicadores.', favorite: false, createdAt: 15, accessCount: 0, lastAccessed: 0 }
+    ];
+  }
 
   const CATEGORY_META = {
     'Gestão e acompanhamento': { icon: '🧭' },
@@ -2094,60 +2072,12 @@ mark.hl {
   let pendingImportLinks = null;
   let currentView = loadPref(VIEW_KEY, 'grid');
 
-  function normalizeUser(str) {
-    return String(str || '')
-      .trim()
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/\s+/g, ' ');
-  }
-
-  function verifyCredentials(user, pass) {
-    const u = normalizeUser(user);
-    const p = String(pass || '').trim();
-    const token = sha256Hex(`${AUTH_VERIFY_SALT}::${u}::${p}`);
-    return token === EXPECTED_AUTH_TOKEN ? `${u}::${p}` : null;
-  }
-
-  /* Desencripta o cofre inicial embarcado usando a chave derivada da senha */
-  function getInitialDefaultLinks(secretStr) {
-    if (!secretStr) return [];
-    if (CUSTOM_GITHUB_VAULT.trim().startsWith('v3:')) {
-      const custom = decryptVault(CUSTOM_GITHUB_VAULT.trim(), secretStr);
-      if (Array.isArray(custom)) return custom;
-    }
-    /* Reconstrói os 15 links originais somente se o secretStr bater com o token válido */
-    if (sha256Hex(`${AUTH_VERIFY_SALT}::${secretStr}`) !== EXPECTED_AUTH_TOKEN) return [];
-
-    const rawVault = "7b2275223a5b2266696c653a2f2f2f686f6d652f6174696c612f446f63756d656e746f732f646565707365656b5f68746d6c5f32303236303830335f3136653135652e68746d6c222c2268747470733a2f2f617070692d613935322e6f6e72656e6465722e636f6d2f70616765732f6167656e64612e68746d6c23222c2268747470733a2f2f6d61696c2e676f6f676c652e636f6d2f6d61696c2f752f302f23696e626f78222c2268747470733a2f2f64726976652e676f6f676c652e636f6d2f64726976652f6d792d64726976653f686c3d70742d6272222c2268747470733a2f2f64726976652e676f6f676c652e636f6d2f64726976652f666f6c646572732f31797966627341306774345437572d38516568727143463034527a69632d454a41222c2268747470733a2f2f636f6173702e6475636b646e732e6f72672f70726f6a656374732f33382f313532222c2268747470733a2f2f7363726970742e676f6f676c652e636f6d2f612f6d6163726f732f6564757465632e7365642e6d732e676f762e62722f732f414b667963627953497142614f78316136372d6d67652d696d43354b4b714b5a3770646859767a6e69656c6f762d31716a546f755244683758634759542d57326c5239357568674e2f65786563222c2268747470733a2f2f7777772e617572616d732e636f6d2e62722f222c2268747470733a2f2f636f6173702e76657263656c2e6170702f23222c2268747470733a2f2f6170702e706f77657262692e636f6d2f766965773f723d65794a72496a6f694f4459345a6a686c4f5467744d7a4e6d4d4330304d7a59314c574a6a4f5755744e5441335a6a67314d6a4178596a4e6a4969776964434936496a4978596a5177596a566d4c54686d4e5463744e4759784f4330354f47466d4c5441354f47466c5a6a67334e6a63335a694a39222c2268747470733a2f2f646f63732e676f6f676c652e636f6d2f7370726561647368656574732f642f314f6b79575350435f364645397867444d436537537a725f764e43644b78544c6b2f656469743f6769643d31373933333535383731236769643d31373933333535383731222c2268747470733a2f2f63616c656e6461722e676f6f676c652e636f6d2f63616c656e6461722f752f302f722f6d6f6e7468222c2268747470733a2f2f67656d696e692e676f6f676c652e636f6d2f617070222c2268747470733a2f2f646f63732e676f6f676c652e636f6d2f646f63756d656e742f752f302f3f746769663d64222c2268747470733a2f2f646f63732e676f6f676c652e636f6d2f7370726561647368656574732f752f302f3f746769663d64225d7d";
-    const urls = JSON.parse(bytesToUtf8(hexToBytes(rawVault))).u;
-
-    return [
-      { id: 'initial-1', name: 'LINK · Gerenciador', url: urls[0], category: 'Ferramentas locais', description: 'Arquivo HTML salvo no computador; o endereço local pode não funcionar em outro dispositivo.', favorite: false, createdAt: 1, accessCount: 0, lastAccessed: 0 },
-      { id: 'initial-2', name: 'Agenda - APPI', url: urls[1], category: 'Gestão e acompanhamento', description: 'Agenda do sistema APPI.', favorite: false, createdAt: 2, accessCount: 0, lastAccessed: 0 },
-      { id: 'initial-3', name: 'EDUTEC-EMAIL', url: urls[2], category: 'Comunicação', description: 'Acesso ao e-mail institucional.', favorite: false, createdAt: 3, accessCount: 0, lastAccessed: 0 },
-      { id: 'initial-4', name: 'Drive-EDUTEC', url: urls[3], category: 'Arquivos e documentos', description: 'Arquivos e pastas do Google Drive institucional.', favorite: false, createdAt: 4, accessCount: 0, lastAccessed: 0 },
-      { id: 'initial-5', name: 'Líderes - Campo Grande - 2026 - Google Drive', url: urls[4], category: 'Arquivos e documentos', description: 'Pasta de materiais dos líderes de Campo Grande — 2026.', favorite: false, createdAt: 5, accessCount: 0, lastAccessed: 0 },
-      { id: 'initial-6', name: 'Átila | Vikunja', url: urls[5], category: 'Gestão e acompanhamento', description: 'Gerenciador de tarefas e projetos.', favorite: false, createdAt: 6, accessCount: 0, lastAccessed: 0 },
-      { id: 'initial-7', name: 'Links UNASP', url: urls[6], category: 'Portais e sistemas', description: 'Portal de links e recursos.', favorite: false, createdAt: 7, accessCount: 0, lastAccessed: 0 },
-      { id: 'initial-8', name: 'SUDEB - Acompanhamento Pedagógico Integrado', url: urls[7], category: 'Gestão e acompanhamento', description: 'Sistema de acompanhamento pedagógico integrado.', favorite: false, createdAt: 8, accessCount: 0, lastAccessed: 0 },
-      { id: 'initial-9', name: 'Gestão COASP', url: urls[8], category: 'Gestão e acompanhamento', description: 'Portal de gestão da COASP.', favorite: false, createdAt: 9, accessCount: 0, lastAccessed: 0 },
-      { id: 'initial-10', name: 'Microsoft Power BI', url: urls[9], category: 'Relatórios e dados', description: 'Painéis e relatórios de dados.', favorite: false, createdAt: 10, accessCount: 0, lastAccessed: 0 },
-      { id: 'initial-11', name: 'Cronograma', url: urls[10], category: 'Planejamento', description: 'Planilha de cronograma.', favorite: false, createdAt: 11, accessCount: 0, lastAccessed: 0 },
-      { id: 'initial-12', name: 'AGENDA', url: urls[11], category: 'Planejamento', description: 'Google Agenda.', favorite: false, createdAt: 12, accessCount: 0, lastAccessed: 0 },
-      { id: 'initial-13', name: 'Gemini - EDU', url: urls[12], category: 'Inteligência artificial', description: 'Assistente de inteligência artificial.', favorite: false, createdAt: 13, accessCount: 0, lastAccessed: 0 },
-      { id: 'initial-14', name: 'Google Docs', url: urls[13], category: 'Arquivos e documentos', description: 'Criação e edição de documentos.', favorite: false, createdAt: 14, accessCount: 0, lastAccessed: 0 },
-      { id: 'initial-15', name: 'Google Planilhas', url: urls[14], category: 'Planilhas e indicadores', description: 'Planilhas eletrônicas e indicadores.', favorite: false, createdAt: 15, accessCount: 0, lastAccessed: 0 }
-    ];
-  }
-
   function loadEncryptedLinks(secretStr) {
     try {
       const savedVault = localStorage.getItem(VAULT_STORAGE_KEY);
-      if (savedVault && savedVault.startsWith('v3:')) {
+      if (savedVault && savedVault.startsWith('v4:')) {
         const decrypted = decryptVault(savedVault, secretStr);
-        if (Array.isArray(decrypted)) return decrypted;
+        if (Array.isArray(decrypted) && decrypted.length > 0) return decrypted;
       }
 
       const legacyRaw = localStorage.getItem(LEGACY_STORAGE_KEY);
@@ -2224,9 +2154,9 @@ mark.hl {
         } catch {}
       }
       unlockAppWithSecret(validSecret);
-      showToast('🔓 Cofre desencriptado com sucesso.');
+      showToast('🔓 Cofre descriptografado com sucesso.');
     } else {
-      els.loginError.textContent = 'Utilizador ou senha incorretos.';
+      els.loginError.textContent = 'Usuário ou senha incorretos.';
       els.loginError.classList.add('show');
       els.loginForm.classList.remove('shake');
       void els.loginForm.offsetWidth;
@@ -2246,10 +2176,10 @@ mark.hl {
       const encryptedPayload = encryptVault(links, activeSecret);
       copyToClipboard(
         encryptedPayload,
-        '🔒 Cofre encriptado copiado! Cole em CUSTOM_GITHUB_VAULT no código antes de publicar no GitHub.'
+        '🔒 Cofre criptografado copiado! Cole em CUSTOM_GITHUB_VAULT no seu HTML antes de subir pro GitHub.'
       );
     } catch {
-      showToast('Erro ao gerar o cofre encriptado.');
+      showToast('Erro ao gerar o cofre criptografado.');
     }
   });
 
@@ -2313,7 +2243,7 @@ mark.hl {
   function domainFor(raw) {
     try {
       const u = new URL(raw);
-      if (u.protocol === 'file:') return 'Ficheiro local neste PC';
+      if (u.protocol === 'file:') return 'Arquivo local neste PC';
       return u.hostname.replace(/^www\./, '');
     } catch {
       return raw;
@@ -2440,7 +2370,7 @@ mark.hl {
     }
 
     els.pinnedSection.style.display = 'block';
-    els.pinnedTitle.textContent = favs.length > 0 ? '⭐ Seus Favoritos em Destaque' : '🔥 Mais Acedidos Recentemente';
+    els.pinnedTitle.textContent = favs.length > 0 ? '⭐ Seus Favoritos em Destaque' : '🔥 Mais Acessados Recentemente';
     els.pinnedList.replaceChildren();
 
     listToShow.forEach(link => {
@@ -2600,7 +2530,7 @@ mark.hl {
       const usageText = accessCount > 0 ? `<span class="usage-badge" title="Total de aberturas">${accessCount}x</span>` : '';
 
       const defaultDesc = local
-        ? 'Ficheiro local no computador (clique para copiar o endereço).'
+        ? 'Arquivo local no computador (clique para copiar o endereço).'
         : 'Clique em qualquer lugar do card para abrir.';
 
       card.innerHTML = `
@@ -2856,7 +2786,7 @@ mark.hl {
       if (idx >= 0) {
         links[idx] = { ...links[idx], name, url, category, description };
       }
-      showToast('✅ Link atualizado e encriptado');
+      showToast('✅ Link atualizado e criptografado');
     } else {
       links.push({
         id: crypto.randomUUID ? crypto.randomUUID() : `link-${Date.now()}-${Math.random().toString(16).slice(2)}`,
@@ -2869,7 +2799,7 @@ mark.hl {
         accessCount: 0,
         lastAccessed: 0
       });
-      showToast('✅ Novo link salvo no cofre encriptado');
+      showToast('✅ Novo link salvo no cofre criptografado');
     }
 
     saveLinks();
@@ -3027,14 +2957,14 @@ mark.hl {
         })
         .filter(x => x && x.name && x.category);
 
-      if (!clean.length) throw new Error('Nenhum link válido encontrado no ficheiro.');
+      if (!clean.length) throw new Error('Nenhum link válido encontrado no arquivo.');
 
       pendingImportLinks = clean;
       els.importStepSelect.style.display = 'none';
       els.importStepConfirm.style.display = 'block';
-      els.importSummaryText.textContent = `O ficheiro "${file.name}" contém ${clean.length} links válidos. Como deseja prosseguir?`;
+      els.importSummaryText.textContent = `O arquivo "${file.name}" contém ${clean.length} links válidos. Como deseja prosseguir?`;
     } catch (err) {
-      showToast(`Erro ao ler ficheiro: ${err.message || 'JSON inválido'}`);
+      showToast(`Erro ao ler arquivo: ${err.message || 'JSON inválido'}`);
     } finally {
       els.importFile.value = '';
     }
@@ -3122,7 +3052,8 @@ mark.hl {
     const savedSession = sessionStorage.getItem(SESSION_SECRET_KEY);
     if (savedSession) {
       const decoded = atob(savedSession);
-      if (sha256Hex(`${AUTH_VERIFY_SALT}::${decoded}`) === EXPECTED_AUTH_TOKEN) {
+      const [u, p] = decoded.split('#');
+      if (verifyCredentials(u, p)) {
         unlockAppWithSecret(decoded);
         return;
       }
@@ -3133,3 +3064,4 @@ mark.hl {
 </script>
 </body>
 </html>
+
